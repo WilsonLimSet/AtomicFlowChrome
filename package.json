@@ -14,6 +14,7 @@
   },
   "type": "module",
   "dependencies": {
+    "daisyui": "^2.51.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "webextension-polyfill": "^0.10.0"
