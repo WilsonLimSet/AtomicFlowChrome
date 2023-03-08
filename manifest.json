@@ -3,6 +3,9 @@
   "description": "Stay in Flow",
   "version": "0.0.1",
   "manifest_version": 3,
+  "permissions": [
+    "storage"
+  ],
   "action": {
     "default_title": "Atomic Flow",
     "default_popup": "index.html"
