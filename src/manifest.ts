@@ -31,6 +31,9 @@ const manifest: Manifest.WebExtensionManifest = {
     },
   ],
   devtools_page: 'src/pages/devtools/index.html',
+  "permissions": [
+    "storage"
+  ],
   web_accessible_resources: [
     {
       resources: ['contentStyle.css', 'icon-128.png', 'icon-34.png'],

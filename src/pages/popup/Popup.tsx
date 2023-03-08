@@ -6,13 +6,11 @@ import logo4 from '@assets/img/instagram.svg';
 import logo5 from '@assets/img/linkedin.svg';
 
 declare const chrome: any;
-
 export default function Popup(): JSX.Element {
   
   const [isChecked, setIsChecked] = useState([false, false, false, false, false]);
 
-  useEffect(() => {
-    
+  useEffect(() => { 
     // Load the saved state from chrome storage when the component mounts
     if (typeof chrome !== 'undefined' && chrome.storage) {
     chrome.storage.sync.get('isChecked', (result: {isChecked: boolean[]}) => {
