@@ -25,6 +25,7 @@ export default function Popup(): JSX.Element {
     const updatedChecked = [...isChecked];
     updatedChecked[index] = !updatedChecked[index];
     setIsChecked(updatedChecked);
+    
   
     const blockedSites = [];
     if (updatedChecked[0]) {

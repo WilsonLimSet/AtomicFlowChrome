@@ -4,7 +4,7 @@
     "typeRoots": [
       "node_modules/@types"
     ],
-    "types": ["vite/client", "node"],
+    "types": ["vite/client", "node","chrome"],
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": false,
     "skipLibCheck": true,

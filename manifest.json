@@ -3,8 +3,12 @@
   "description": "Stay in Flow",
   "version": "0.0.1",
   "manifest_version": 3,
+  "background": {
+    "service_worker": "background.js"
+  },
   "permissions": [
-    "storage"
+    "storage",
+    "declarativeNetRequest"
   ],
   "action": {
     "default_title": "Atomic Flow",
