@@ -19,4 +19,12 @@ declare module '*.json' {
   const content: string;
   export default content;
 }
+declare namespace chrome.runtime {
+  interface MessageSender {
+    id: string;
+    url?: string;
+    tab?: chrome.tabs.Tab;
+    frameId?: number;
+  }
+}
 declare const chrome: any;
