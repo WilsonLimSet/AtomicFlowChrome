@@ -90,7 +90,7 @@ function getRandomInt(min: number, max: number): number {
               redirect: { regexSubstitution: 'chrome://extensions/?id=innkffgfdhoihnbdfigkjhlplhgmhfnm/src/pages/newtab/index.html' },
             },
             condition: {
-              urlFilter: '*://*.youtube.com/*',
+              urlFilter: '*://*.youtube.com/*,*://*.linkedin.com/*',
             },
           },
         ],
