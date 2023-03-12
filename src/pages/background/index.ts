@@ -5,6 +5,7 @@ function getRandomInt(min: number, max: number): number {
   }
   
   chrome.runtime.onInstalled.addListener(() => {
+    const redirectUrl = chrome.runtime.getURL('chrome-extension://innkffgfdhoihnbdfigkjhlplhgmhfnm/src/pages/newtab/index.html');
     // Set up a listener for incoming messages from the popup
     chrome.runtime.onMessage.addListener((message: string, sender: chrome.runtime.MessageSender, sendResponse: (response?: any) => void)=>{
       if (message === 'getBlockedSites') {
@@ -37,11 +38,16 @@ function getRandomInt(min: number, max: number): number {
         if (isChecked[4]) {
           blockedSites.push('*://*.linkedin.com/*');
         }
-  
+        
         const rules = blockedSites.map((site) => ({
           id: getRandomInt(1, 1000000),
           priority: 1,
-          action: {type: 'block'},
+          action: {
+            type: 'redirect',
+            'redirect':{
+                "url": 'https://wilsonlimsetiawan.com/'
+            }
+          },
           condition: {urlFilter: site},
         }));
   
@@ -72,28 +78,17 @@ function getRandomInt(min: number, max: number): number {
         const rules = blockedSites.map((site) => ({
           id: getRandomInt(1, 1000000) as number,
           priority: 1,
-          action: {type: 'block'},
+          action: {
+            type: 'redirect',
+            'redirect':{
+                "url": 'https://wilsonlimsetiawan.com/'
+            }
+          },
           condition: {urlFilter: site},
         }));
   
         chrome.declarativeNetRequest.updateDynamicRules({removeRuleIds: [], addRules: rules}, () => {});
       }
     });
-
-    chrome.declarativeNetRequest.updateDynamicRules({
-        addRules: [
-          {
-            id: getRandomInt(1, 1000000),
-            priority: 1,
-            action: {
-              type: 'redirect',
-              redirect: { regexSubstitution: 'chrome://extensions/?id=innkffgfdhoihnbdfigkjhlplhgmhfnm/src/pages/newtab/index.html' },
-            },
-            condition: {
-              urlFilter: '*://*.youtube.com/*,*://*.linkedin.com/*',
-            },
-          },
-        ],
-      });
   });
   

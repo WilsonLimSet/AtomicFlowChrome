@@ -8,7 +8,9 @@
   },
   "permissions": [
     "storage",
-    "declarativeNetRequest"
+    "declarativeNetRequest",
+    "chrome-extension://*/"
+
   ],
   "action": {
     "default_title": "Atomic Flow",
