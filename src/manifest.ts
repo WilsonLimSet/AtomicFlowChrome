@@ -33,8 +33,13 @@ const manifest: Manifest.WebExtensionManifest = {
   ],
   devtools_page: 'src/pages/devtools/index.html',
   "permissions": [
+    "activeTab",
+      "tabs",
+      "webNavigation",
+    
     "storage",
     "declarativeNetRequest"
+
   ],
   web_accessible_resources: [
     {

@@ -52,7 +52,7 @@ export default function Popup(): JSX.Element {
   const logos = [logo1, logo2, logo3, logo4, logo5];
 
   return (
-    <div className="absolute top-0 left-0 right-0 bottom-0 text-center h-full p-3 bg-gray-800">
+    <div className="absolute top-0 left-0 right-0 bottom-0 text-center h-full p-4 m-0 bg-gray-800 overflow-hidden">
       <header className="flex flex-col items-center justify-center text-white">
         <h1 className="text-2xl font-bold">Atomic Flow</h1>
       </header>

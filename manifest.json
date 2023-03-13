@@ -4,14 +4,28 @@
   "version": "0.0.1",
   "manifest_version": 3,
   "background": {
-    "service_worker": "background.js"
+    "persistent": true,
+    "service_worker": "src/pages/background/index.js"
   },
+  "declarative_net_request": {
+    "rule_resources": [{
+      "id": "ruleset_1",
+      "enabled": true,
+      "path": "rules.json"
+    }]
+  },
+  
   "permissions": [
+    "activeTab",
+      "tabs",
+      "webNavigation",
     "storage",
-    "declarativeNetRequest",
-    "chrome-extension://*/"
+    "declarativeNetRequest"
 
   ],
+  "host_permissions":[
+    "<all_urls>"
+],
   "action": {
     "default_title": "Atomic Flow",
     "default_popup": "index.html"
