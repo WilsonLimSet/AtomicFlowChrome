@@ -1,6 +1,6 @@
 {
   "name": "Atomic Flow",
-  "description": "Stay in Flow",
+  "description": "The best extension to keep in a state of flow, blocking popular social media websites that can easily distract us.",
   "version": "0.0.1",
   "manifest_version": 3,
   "background": {
