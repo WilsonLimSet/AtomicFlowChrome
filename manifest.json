@@ -16,9 +16,6 @@
   },
   
   "permissions": [
-    "activeTab",
-      "tabs",
-      "webNavigation",
     "storage",
     "declarativeNetRequest"
 
