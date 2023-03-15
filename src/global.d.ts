@@ -29,4 +29,11 @@ declare namespace chrome.runtime {
 }
 declare const chrome: any;
 
+declare namespace chrome.storage {
+  interface StorageChange {
+    newValue?: any;
+    oldValue?: any;
+  }
+}
+
 
