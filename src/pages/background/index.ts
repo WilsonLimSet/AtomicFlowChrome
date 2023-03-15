@@ -4,7 +4,7 @@ function getRandomInt(min: number, max: number): number {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
   
-  function setupBlockingRules(isChecked: boolean[]) {
+function setupBlockingRules(isChecked: boolean[]) {
     const blockedSites: string[] = [];
     if (isChecked[0]) {
       blockedSites.push('*://*.youtube.com/*');
@@ -23,9 +23,9 @@ function getRandomInt(min: number, max: number): number {
     }
   
     const rules = blockedSites.map((site) => ({
-      id: getRandomInt(1, 1000000) as number,
+      id: getRandomInt(1, 10000000) as number,
       priority: 1,
-      action: { "type": "redirect", "redirect": { "url": "https://www.productivityblocker.com/blocked" } },
+      "action": { "type": "redirect", "redirect": { "url": "https://example.com" } },
       condition: {urlFilter: site,"resourceTypes": ["main_frame"] },
     }));
     console.log('Rules:', rules);
