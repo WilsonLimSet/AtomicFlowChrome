@@ -30,11 +30,15 @@ function setupBlockingRules(isChecked: boolean[]) {
   }));
 
   console.log('Rules:', rules);
-    //doesn't properly remove rules
-    chrome.declarativeNetRequest.updateDynamicRules({ removeRuleIds: [], addRules: rules }, () => {
+  
+  chrome.declarativeNetRequest.getDynamicRules().then((existingRules:any) => {
+    const ruleIds = existingRules.map((rule:any) => rule.id);
+    chrome.declarativeNetRequest.updateDynamicRules({ removeRuleIds: ruleIds, addRules: rules }, () => {
       console.log('Blocking rules updated');
     });
-  
+  }).catch((error:any) => {
+    console.error('Error fetching dynamic rules:', error);
+  });
 }
 
 
