@@ -28,10 +28,12 @@ const manifest: Manifest.WebExtensionManifest = {
       matches: ["http://*/*", "https://*/*", "<all_urls>"],
       js: ["src/pages/content/index.js"],
       css: ["contentStyle.css"],
+      run_at: "document_start" 
+      
     },
   ],
   devtools_page: "src/pages/devtools/index.html",
-  permissions: ["storage", "declarativeNetRequest"],
+  permissions: ["storage", "declarativeNetRequest","tabs","webNavigation"],
   host_permissions: ["<all_urls>"],
   web_accessible_resources: [
     {
