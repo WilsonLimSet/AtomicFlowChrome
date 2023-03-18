@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import logo1 from '@assets/img/youtube.svg';
-import logo2 from '@assets/img/twitter.svg';
+import logo2 from '@assets/img/facebook.svg';
 import logo3 from '@assets/img/reddit.svg';
 import logo4 from '@assets/img/instagram.svg';
 import logo5 from '@assets/img/linkedin.svg';
 
 const websites = [
   { name: 'YouTube', logo: logo1 },
-  { name: 'Twitter', logo: logo2 },
+  { name: 'Facebook', logo: logo2 },
   { name: 'Reddit', logo: logo3 },
   { name: 'Instagram', logo: logo4 },
   { name: 'LinkedIn', logo: logo5 },

@@ -2,7 +2,7 @@
   "name": "atomic-flow",
   "displayName": "Atomic Flow",
   "version": "0.1.0",
-  "description": "A simple chrome extension template with Vite, React, TypeScript and Tailwind CSS.",
+  "description": "The best way to avoid distractions and stay in flow.",
   "license": "MIT",
   "repository": {
     "type": "git",
