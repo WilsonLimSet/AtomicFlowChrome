@@ -4,33 +4,36 @@ export default function NewTab(): JSX.Element {
   const [redirectCount, setRedirectCount] = useState(0);
 
   useEffect(() => {
-    if (typeof chrome !== 'undefined' && chrome.storage) {
-      chrome.storage.sync.get('redirectCount', (result: { redirectCount: number }) => {
-        if (result.redirectCount) {
-          setRedirectCount(result.redirectCount);
-        }
-      });
-    }
+    // Retrieve the current redirect count from storage
+    chrome.storage.sync.get('redirectCount', (result: { redirectCount: number }) => {
+      if (result.redirectCount) {
+        setRedirectCount(result.redirectCount);
+      }
+    });
 
-    // Increment the redirect count when the new tab page loads
-    chrome.runtime.sendMessage('incrementRedirectCount');
+    // Listen for changes to the redirect count in storage and update the state accordingly
+    chrome.storage.onChanged.addListener((changes: { [key: string]: chrome.storage.StorageChange }) => {
+      if (changes.redirectCount) {
+        setRedirectCount(changes.redirectCount.newValue);
+      }
+    });
   }, []);
 
-  chrome.runtime.onMessage.addListener((message: string, sender: chrome.runtime.MessageSender, sendResponse: (response?: any) => void) => {
-    if (message === 'incrementRedirectCount') {
-      incrementRedirectCount();
-    }
-  });
-
+  // Increment the redirect count and update storage
   function incrementRedirectCount() {
     chrome.storage.sync.get('redirectCount', (result: { redirectCount: number }) => {
       const newCount = result.redirectCount ? result.redirectCount + 1 : 1;
       chrome.storage.sync.set({ redirectCount: newCount }, () => {
-        // Update the redirect count in state after it's been saved to storage
+        // Update the redirect count in state and immediately display it
         setRedirectCount(newCount);
       });
     });
   }
+
+  // Call incrementRedirectCount when the component mounts
+  useEffect(() => {
+    incrementRedirectCount();
+  }, []);
 
   return (
     <div className="h-screen flex flex-col items-center justify-center bg-gray-800">

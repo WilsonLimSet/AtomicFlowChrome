@@ -24,7 +24,7 @@ function setupBlockingRules(isChecked: boolean[]) {
     blockedSites.push('*://*.youtube.com/*');
   }
   if (isChecked[1]) {
-    blockedSites.push('*://*.twitter.com/*');
+    blockedSites.push('*://*twitter.com/*', '*://*.twimg.com/*');
   }
   if (isChecked[2]) {
     blockedSites.push('*://*.reddit.com/*');
