@@ -17,21 +17,19 @@ export default function NewTab(): JSX.Element {
         setRedirectCount(changes.redirectCount.newValue);
       }
     });
-  }, []);
 
-  // Increment the redirect count and update storage
-  function incrementRedirectCount() {
-    chrome.storage.sync.get('redirectCount', (result: { redirectCount: number }) => {
-      const newCount = result.redirectCount ? result.redirectCount + 1 : 1;
-      chrome.storage.sync.set({ redirectCount: newCount }, () => {
-        // Update the redirect count in state and immediately display it
-        setRedirectCount(newCount);
+    // Increment the redirect count and update storage
+    function incrementRedirectCount() {
+      chrome.storage.sync.get('redirectCount', (result: { redirectCount: number }) => {
+        const newCount = result.redirectCount ? result.redirectCount + 1 : 1;
+        chrome.storage.sync.set({ redirectCount: newCount }, () => {
+          // Update the redirect count in state and immediately display it
+          setRedirectCount(newCount);
+        });
       });
-    });
-  }
+    }
 
-  // Call incrementRedirectCount when the component mounts
-  useEffect(() => {
+    // Call incrementRedirectCount when the component mounts
     incrementRedirectCount();
   }, []);
 

@@ -24,7 +24,7 @@ function setupBlockingRules(isChecked: boolean[]) {
     blockedSites.push('*://*.youtube.com/*');
   }
   if (isChecked[1]) {
-    blockedSites.push('*://*twitter.com/*', '*://*.twimg.com/*');
+    blockedSites.push("https://*.twitter.com/*", "https://twitter.com/*", "https://*.abs.twimg.com/*");
   }
   if (isChecked[2]) {
     blockedSites.push('*://*.reddit.com/*');
@@ -41,12 +41,12 @@ function setupBlockingRules(isChecked: boolean[]) {
     id: getRandomInt(1, 100000000) as number,
     priority: 1,
     action: { type: 'redirect', redirect: { url: 'chrome-extension://innkffgfdhoihnbdfigkjhlplhgmhfnm/src/pages/newtab/index.html' } },
-    condition: { urlFilter: site, resourceTypes: ['main_frame'] },
+    condition: { urlFilter: site, resourceTypes: ['main_frame', 'sub_frame', 'script', 'image', 'object', 'xmlhttprequest', 'other'] },
   }));
 
   console.log('Rules:', rules);
 
-  // Update the dynamic rules in the extension
+  // Update the dynamic rules in the extension.
   chrome.declarativeNetRequest.getDynamicRules().then((existingRules:any) => {
     const ruleIds = existingRules.map((rule:any) => rule.id);
     chrome.declarativeNetRequest.updateDynamicRules({ removeRuleIds: ruleIds, addRules: rules }, () => {
