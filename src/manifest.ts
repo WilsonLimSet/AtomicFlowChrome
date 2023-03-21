@@ -33,7 +33,8 @@ const manifest: Manifest.WebExtensionManifest = {
     },
   ],
   devtools_page: "src/pages/devtools/index.html",
-  permissions: ["storage", "declarativeNetRequest","tabs","webNavigation"],
+  //permissions: ["storage", "declarativeNetRequest","tabs","webNavigation"],
+  permissions: ["storage", "declarativeNetRequest"],
   host_permissions: ["<all_urls>"],
   web_accessible_resources: [
     {
