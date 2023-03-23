@@ -36,11 +36,13 @@ function setupBlockingRules(isChecked: boolean[]) {
     blockedSites.push('*://*.linkedin.com/*');
   }
 
+  const newTabUrl = chrome.runtime.getURL('chrome-extension://innkffgfdhoihnbdfigkjhlplhgmhfnm/src/pages/newtab/index.html');
+
   // Create rules for blocking sites
   const rules = blockedSites.map((site) => ({
     id: getRandomInt(1, 100000000) as number,
     priority: 1,
-    action: { type: 'redirect', redirect: { url: 'chrome-extension://innkffgfdhoihnbdfigkjhlplhgmhfnm/src/pages/newtab/index.html' } },
+    action: { type: 'redirect', redirect: { url: newTabUrl } },
     condition: { urlFilter: site, resourceTypes: ['main_frame', 'sub_frame', 'script', 'image', 'object', 'xmlhttprequest', 'other'] },
   }));
 
