@@ -36,7 +36,7 @@ function setupBlockingRules(isChecked: boolean[]) {
     blockedSites.push('*://*.linkedin.com/*');
   }
 
-  const newTabUrl = chrome.runtime.getURL('chrome-extension://innkffgfdhoihnbdfigkjhlplhgmhfnm/src/pages/newtab/index.html');
+  const newTabUrl = chrome.runtime.getURL('src/pages/newtab/index.html');
 
   // Create rules for blocking sites
   const rules = blockedSites.map((site) => ({
